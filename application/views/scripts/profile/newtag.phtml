@@ -1,0 +1,50 @@
+
+<link rel="StyleSheet" href="../styles/style.css" type="text/css" />
+<link rel="StyleSheet" href="../styles/jquery-ui.css" type="text/css" />
+<script type="text/javascript" src="../javascript/jQuery.js"></script>
+<script type="text/javascript" src="../javascript/jquery-ui.js"></script>
+<script type="text/javascript" src="../javascript/add_interest_tag.js" ></script>
+
+
+<body>
+
+	<div class="navigation_bar">
+		<div class="user_name">
+			<?php echo "User: ".$this->username?>
+		</div>
+		<div style="border:1px solid #C5C5C5;margin:0 0 10px"></div>
+		<div class="navigation_link">
+			<a href="../recommend">Home</a>
+		</div>
+		<div class="navigation_link">
+			<a href="../recommend/history">History</a>
+		</div>
+		<div class="navigation_link">
+			<a href="../profile">Profile</a>
+		</div>
+		<div class="navigation_link">
+			<a href="newtag">Add Tag</a>
+		</div>
+		<div class="navigation_link">
+			<a href="../index/logout">Logout</a>
+		</div>
+		
+	</div>
+	
+	<div class="content">
+		<div style="margin: 20px 200px" class="input_box">
+			<div id="message" class="message">
+			</div>
+	
+			<div>
+				<p>Input your interest tag:</p>
+				<form action="" method="post">
+					<input type="text" name="input_tag_box" id="interest_tag"/>
+					<input class="button" type="button" value="add" onclick="new_tag(this.form.input_tag_box.value)"/>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	
+</body>

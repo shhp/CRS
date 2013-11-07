@@ -1,0 +1,20 @@
+
+<link rel="StyleSheet" href="styles/style.css" type="text/css" />
+
+<body>
+		
+	<div class="input_box">
+		<div class="message">
+			<?php echo $this->message?>
+		</div>
+		
+		<?php
+ 			$this->loginForm->setAction($this->url());
+			echo $this->loginForm;
+		?>
+	</div>
+	
+</body>
+	
+
+		

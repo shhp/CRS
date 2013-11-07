@@ -1,0 +1,118 @@
+<link rel="StyleSheet" href="styles/style.css" type="text/css" />
+
+<script type="text/javascript" src="javascript/jQuery.js"></script>
+<script type="text/javascript" src="javascript/jquery.flot.js"></script>
+
+<body>
+
+	<div class="navigation_bar">
+		<div class="user_name">
+			<?php echo "User: ".$this->username?>
+		</div>
+		<div style="border:1px solid #C5C5C5;margin:0 0 10px"></div>
+		<div class="navigation_link">
+			<a href="recommend">Home</a>
+		</div>
+		<div class="navigation_link">
+			<a href="recommend/history">History</a>
+		</div>
+		<div class="navigation_link">
+			<a href="profile">Profile</a>
+		</div>
+		<div class="navigation_link">
+			<a href="profile/newtag">Add Tag</a>
+		</div>
+		<div class="navigation_link">
+			<a href="index/logout">Logout</a>
+		</div>
+		
+	</div>
+	
+	<div class="content" style="left:250px">
+	
+		<div>
+			<span>Interests:</span>
+			<p/>
+			
+			<table id="interests_table" border="0" cellspacing="10">
+				<?php 
+					for($i = 0;$i < count($this->interests);$i++){
+						if($i % 5 == 0){
+							echo "<tr>";
+						}
+						
+						printf("<td> <a class='interest_tag' href='recommend/history?tag=%s'> %s </a> </td>",$this->interests[$i]->name,$this->interests[$i]->name);
+						
+						if($i % 5 == 4){
+							echo "</tr>";
+						}
+					}
+				?>
+			</table>
+			
+			<div id="placeholder_interests" style="width:1000px;height:300px">
+		
+			</div>
+			<?php 
+// 				foreach($this->interests as $interest){
+// 					echo "<p style=\"color:#0000ff\">".$interest->name.":".$interest->read_num."/".$interest->recommended_num."</p>";
+// 				}
+			?>
+		</div>
+		
+		<p/>
+		
+		<div>
+			<span>Potential Interests:</span>
+			<p/>
+			<div id="placeholder_potential_interests" style="width:1000px;height:300px">
+		
+			</div>
+			<?php 
+// 				foreach($this->potential_interests as $interest){
+// 					echo "<p style=\"color:#0000ff\">".$interest->name.":".$interest->read_num."/".$interest->recommended_num."</p>";
+// 				}
+			?>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(function () {
+		    <?php 
+		    	$data_interests_recommended = "var data_interests_recommended=[";
+		    	$data_interests_read = "var data_interests_read=[";
+		    	$options = "var options_interests = {xaxis: {ticks: [";
+		    	$start_point = 0;
+		    	foreach($this->interests as $interest){
+		    		$data_interests_read .= "[".$start_point.",".$interest->read_num."],";
+		    		$data_interests_recommended .= "[".($start_point+1).",".$interest->recommended_num."],";
+		    		$options .= "[".($start_point + 1).","."\"$interest->name\"],";
+		    		$start_point += 3;
+		    	}
+		    	
+		    	echo $data_interests_recommended."]\n";
+		    	echo $data_interests_read."]\n";
+		    	echo $options."]},yaxis:{minTickSize:1}}\n";
+		    	
+		    	$data_potential_interests_recommended = "var data_potential_interests_recommended=[";
+		    	$data_potential_interests_read = "var data_potential_interests_read=[";
+		    	$options = "var options_potential_interests = {xaxis: {ticks: [";
+		    	$start_point = 0;
+		    	foreach($this->potential_interests as $interest){
+		    		$data_potential_interests_read .= "[".$start_point.",".$interest->read_num."],";
+		    		$data_potential_interests_recommended .= "[".($start_point+1).",".$interest->recommended_num."],";
+		    		$options .= "[".($start_point + 1).","."\"$interest->name\"],";
+		    		$start_point += 3;
+		    	}
+		    	 
+		    	echo $data_potential_interests_recommended."]\n";
+		    	echo $data_potential_interests_read."]\n";
+		    	echo $options."]},yaxis:{minTickSize:1}}\n";
+		    ?>
+		
+		    $.plot($("#placeholder_interests"),  [{data: data_interests_recommended,label:"Recommended", bars : { show: true }},{data: data_interests_read,color:"rgb(50,50,255)",label:"Read", bars : { show: true }}],options_interests);
+		    $.plot($("#placeholder_potential_interests"),  [{data: data_potential_interests_recommended,label:"Recommended",bars : { show: true }},{data: data_potential_interests_read,color:"rgb(50,50,255)",label:"Read", bars : { show: true }}],options_potential_interests);
+		});
+	</script>
+	
+</body>

@@ -1,0 +1,67 @@
+<link rel="StyleSheet" href="styles/style.css" type="text/css" />
+<script type="text/javascript" src="javascript/jQuery.js"></script>
+<script type="text/javascript" src="javascript/get_articles.js" ></script>
+<script type="text/javascript" src="javascript/click_article.js" ></script>
+
+<body>
+	
+	<div class="navigation_bar">
+		<div class="user_name">
+			<?php echo "User: ".$this->username?>
+		</div>
+		<div style="border:1px solid #C5C5C5;margin:0 0 10px"></div>
+		<div class="navigation_link">
+			<a href="recommend">Home</a>
+		</div>
+		<div class="navigation_link">
+			<a href="recommend/history">History</a>
+		</div>
+		<div class="navigation_link">
+			<a href="profile">Profile</a>
+		</div>
+		<div class="navigation_link">
+			<a href="profile/newtag">Add Tag</a>
+		</div>
+		<div class="navigation_link">
+			<a href="index/logout">Logout</a>
+		</div>
+		
+	</div>
+	
+	<div class="content">
+		<div id="inform_new_articles">
+		
+		</div>
+	
+		<div id="show_articles_area">
+			<?php 
+				if(count($this->articles) == 0){
+					print "<p style='margin : 3px 150px;' id='no_articles'>No more articles can be recommended to you now.</p>";
+				}
+				else{
+					$count = 1;
+					foreach($this->articles as $article){
+						//echo $entry->id() . "<br />";
+						printf("<p class='article' id='$article->id'><a href = '%s' title='$article->id' onclick='window.open(this.href);see_article($article->id);return false;'>[$count] %s</a>(<span style='color:#FF5050'>%s:%01.2f</span>) <br />",
+						$article->url,
+						$article->title,
+						$article->related_tag,
+						$article->relevance
+						);
+					printf("%s </p>",$article->description);
+					$count++;
+					}
+				}
+		?>
+		</div>
+	</div>
+	
+<!-- 	<div> -->
+<!-- 		<a href="profile">Profile</a> -->
+<!-- 		<a href="index/logout">Logout</a> -->
+<!-- 	</div> -->
+	
+	
+	
+</body>
+	

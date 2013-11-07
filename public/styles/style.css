@@ -1,0 +1,123 @@
+.message {
+	color : #ff0000;
+}
+
+ul,.errors {
+	display : none;
+}
+
+dd#register-element,#login-element {
+	display : inline;
+}
+
+dt#register-label {
+	display : inline;
+}
+
+
+.input_box {
+	margin: 200px auto;
+	padding: 20px 25px 15px;
+	background: #F1F1F1 url(http://sc.websbook.com/sc/upimg/allimg/090709/colourback_18012.jpg) top;
+	border: 2px solid #E5E5E5;
+	width:250px;
+	font-family:Rockwell;
+	font-size:25;	
+}
+
+.button {
+	border: 1px solid #3079ED;
+	color: white;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+	background-color: #4D90FE;
+	font-family:Rockwell;
+}
+
+#inform_new_articles{
+	margin : 10px 250px ;
+	padding : 5px 5px 5px 10px ;
+	width : 540px;
+	background: #FEFFE5;
+	color: #D4A639;
+	border: 1px solid #F9F2A7;
+	text-align:center;
+	display:none
+}
+
+.navigation_bar {
+	position : fixed;
+	width : 180px;
+	height : 95%;
+	border-left : 2px dotted #3399FF;
+	border-right : 2px dotted #3399FF;
+	border-top: 2px dotted #3399FF;
+	background-color: #0FC;
+	background: url(http://sc.websbook.com/sc/upimg/allimg/090709/colourback_18016.jpg) right;
+	padding : 50px 15px;
+}
+
+.content {
+	position : absolute;
+	left : 150px;
+}
+
+.navigation_link {
+	vertical-align : middle;
+	height : 20px;
+	padding : 15px 10px 20px 10px ;
+	font-size : 18px;
+	font-family :Rockwell;
+	border-bottom:1px solid #002099;
+        border-top:1px solid #002099;
+	border-left:20px solid #002099;
+	border-right:2px solid #002099;
+        text-align:right;
+        text-decoration:none;
+
+        margin: 0 15px 10px;
+}
+
+.navigation_link:visited{
+    background-color:#1136c1;
+    color:#FFFFFF;
+}
+
+.navigation_link:hover{
+    background-color:gray;
+    color:#ffff00;
+    border-left:12px solid white;
+    border-bottom:1px solid white;
+    border-top:1px solid white;
+    border-right:2px solid white;
+}
+
+.user_name {
+	text-align: center;
+	margin : 0 0 30px;
+	font-family:Showcard Gothic;
+	font-size:22;	
+}
+
+.article {
+        border-left:2px dashed;
+        border-right:2px dashed;
+        border-top:2px dashed;
+	border-bottom-width: 2px;
+	border-bottom-style: dashed;
+	border-color: pink;
+	width : 700px;
+	margin : 25px 150px ;
+	padding : 20px 20px;
+	background-color:#eee;
+	font-family:Verdana;
+	word-spacing:4px;
+	font-size:14px;
+	text-indent:2em;
+	line-height:1.6;
+}
+
+.interest_tag {
+	background : #F0F0F0;
+	text-align:center;
+	border : 1px dotted;
+}
